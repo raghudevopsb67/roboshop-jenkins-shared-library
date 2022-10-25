@@ -1,20 +1,14 @@
 def call() {
   node {
 
-
       common.codeQuality()
-//
-//      stage('Style Checks') {
-//        when {
-//          anyOf {
-//            branch 'main'
-//            tag "*"
-//          }
-//        }
-//        steps {
-//          echo 'Code Quality'
-//        }
-//      }
+
+      if ( branch == "main" || tag ==~ "*" ) {
+        stage('Style Checks') {
+          echo 'Code Quality'
+        }
+      }
+
 //
 //      stage('Unit Tests') {
 //        when {
