@@ -5,7 +5,17 @@ def call() {
 
     stages {
 
-      common.codeQuality
+      stage('Compile Code'){
+        steps {
+          echo 'Compile Code'
+        }
+      }
+
+      stage('Code Quality') {
+        steps {
+          echo 'Code Quality'
+        }
+      }
 
       stage('Style Checks') {
         when {
@@ -15,7 +25,7 @@ def call() {
           }
         }
         steps {
-          echo 'Code Quality'
+          echo 'Style Checks'
         }
       }
 
@@ -31,7 +41,7 @@ def call() {
         }
       }
 
-      stage('Download Dependencies') {
+      stage('Build Package') {
         when { tag "*" }
         steps {
           echo 'Download Dependencies'

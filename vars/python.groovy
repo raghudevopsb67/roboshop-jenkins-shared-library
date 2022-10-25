@@ -5,7 +5,12 @@ def call() {
 
     stages {
 
-      common.codeQuality
+      stage('Code Quality') {
+        steps {
+          echo 'Code Quality'
+          sh 'env'
+        }
+      }
 
       stage('Style Checks') {
         when {
@@ -31,13 +36,6 @@ def call() {
         }
       }
 
-      stage('Download Dependencies') {
-        when { tag "*" }
-        steps {
-          echo 'Download Dependencies'
-        }
-      }
-
       stage('Prepare Artifact') {
         when { tag "*" }
         steps {
@@ -56,5 +54,6 @@ def call() {
     }
 
   }
+
 
 }
