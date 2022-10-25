@@ -4,11 +4,11 @@ def call() {
       sh 'env'
       common.codeQuality()
 
-//      if ( branch == "main" || tag ==~ "*" ) {
-//        stage('Style Checks') {
-//          echo 'Code Quality'
-//        }
-//      }
+      if ( BRANCH_NAME == "main" || tag ==~ "*" ) {
+        stage('Style Checks') {
+          echo 'Code Quality'
+        }
+      }
 
 //
 //      stage('Unit Tests') {
