@@ -2,6 +2,10 @@ def call() {
   pipeline {
     agent any
 
+    options {
+      ansiColor('xterm')
+    }
+
     parameters {
       choice(name: 'ENV', choices: ['', 'dev', 'prod'], description: 'Environment')
       choice(name: 'ACTION', choices: ['', 'apply', 'destroy'], description: 'Action')
